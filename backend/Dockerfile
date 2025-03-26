@@ -4,13 +4,14 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --production
 
 COPY . .
 
+# 먼저 빌드 실행
 RUN npm run build
 
 EXPOSE 4000
 
-# 개발 모드로 실행으로 변경
-CMD ["npm", "run", "start:dev"]
+# 프로덕션 모드 실행
+CMD ["npm", "run", "start"]
